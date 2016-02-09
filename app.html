@@ -18,7 +18,15 @@
       <input id="new-task" placeholder="+ Add a task..." >
     </header>
 
+    <ul id="list">
+    </ul>
   </div>
+
+  <script type="text/template" id="task-template">
+  <div>
+    <span><%- description %></span>
+  </div>
+  </script>
   
   <script type="text/javascript">
     // your JS code goes here
