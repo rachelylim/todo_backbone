@@ -7,7 +7,15 @@ var Task = Backbone.Model.extend({
   toggle: {
     this.save({done: !this.get('done')});
   }
+});
+
+// COLLECTION //
+var TaskList = Backbone.Collection.extend({
+  model: Task,
+  localStorage: new Store("tasks-backbone")
 })
+
+// VIEW //
 
 $(function() {
 
