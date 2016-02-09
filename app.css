@@ -1,0 +1,22 @@
+*{
+  list-style: none;
+}
+
+.container{
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  height: 800px;
+  border: black solid;
+  border-radius: 15px;
+}
+
+#new-task{
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 20px;
+  background: lightgrey;
+  padding-left: 20px;
+  border: 0;
+}
