@@ -1,3 +1,4 @@
+// VIEW FOR INDIVIDUAL TASK INSIDE LIST
 var app = app || {};
 
 $(document).ready(function(){
@@ -20,6 +21,7 @@ $(document).ready(function(){
       'keypress .edit': 'enterSave',
       'blur .edit': 'save'
     },
+    // event functions
     edit: function(){
       this.$el.addClass('editing');
       this.input.focus();

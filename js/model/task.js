@@ -1,3 +1,4 @@
+// MODEL FOR INDIVIDUAL TASK
 var app = app || {};
 
 $(document).ready(function(){
