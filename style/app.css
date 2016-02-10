@@ -37,6 +37,7 @@ li{
 
 li:hover{
   border: grey solid 2px;
+  cursor: move;
 }
 
 input.edit{
