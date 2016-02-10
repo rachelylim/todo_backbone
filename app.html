@@ -9,6 +9,8 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>
   <!-- // <script src="app.js"></script>  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="awesome-bootstrap-checkbox.css">
   <link rel="stylesheet" type="text/css" href="app.css"> 
 </head>
 <body>
@@ -26,6 +28,7 @@
 
   <script type="text/template" id="task-template">
   <div>
+    <input type="checkbox">
     <span><%- description %></span
   </div>
   </script>
@@ -78,7 +81,6 @@
     createNewTaskOnEnter: function(event){
       if(event.keyCode === 13) {
         var test = taskList.create(this.newTask());
-        // debugger
         this.input.val('');
       }
 
