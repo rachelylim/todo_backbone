@@ -23,7 +23,6 @@ body{
 .list-display{
   text-align: left;
   margin-left: -5px;
-  /*padding-left: 30px;*/
   font-size: 20px;
 }
 
@@ -38,17 +37,11 @@ li{
 
 li:hover{
   border: grey solid 2px;
-  /*background: lightgrey;
-  opacity: 0.7;*/
 }
 
 .toggle:checked + label{
   text-decoration: line-through;
   color: lightgrey;
-}
-
-input[type=checkbox]{
-  background: grey;
 }
 
 button {
@@ -80,5 +73,4 @@ button:hover{
   padding-left: 20px;
   border: 0;
   outline: none;
-  /*font-family: serif;*/
 }
