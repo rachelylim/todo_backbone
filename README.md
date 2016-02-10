@@ -7,9 +7,9 @@ Technologies used:
 *CSS
 
 Current Features:
-*Add a task upon hitting enter key.
+*Add a task on enter.
 *Sort task order in list.
-*Edit tasks.
+*Edit tasks on double-click.
 *Delete tasks.
 *Check off tasks and mark as "done".
 
