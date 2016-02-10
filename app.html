@@ -8,7 +8,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>
-  <script src="app.js"></script> 
+  <!-- // <script src="app.js"></script>  -->
   <link rel="stylesheet" type="text/css" href="app.css"> 
 </head>
 <body>
@@ -18,18 +18,89 @@
       <input id="new-task" placeholder="+ Add a task..." >
     </header>
 
-    <ul id="list">
-    </ul>
+    <div class="list-display">
+      <ul id="list">
+      </ul>
+    </div>
   </div>
 
   <script type="text/template" id="task-template">
   <div>
-    <span><%- description %></span>
+    <span><%- description %></span
   </div>
   </script>
   
   <script type="text/javascript">
-    // your JS code goes here
+      // MODEL //
+  var Task = Backbone.Model.extend({
+    defaults: {
+      description: '',
+      done: false
+    },
+    toggle: function(){
+      this.save({done: !this.get('done')});
+    }
+  });
+
+  // COLLECTION //
+  var TaskList = Backbone.Collection.extend({
+    model: Task,
+    localStorage: new Store("tasks-backbone")
+  })
+
+  var taskList = new TaskList();
+
+  // VIEW //
+
+  var ListView = Backbone.View.extend({
+    tagName: 'li',
+    template: _.template($('#task-template').html()),
+    render: function(){
+      this.$el.html(this.template(this.model.toJSON()));
+      return this;
+    },
+    initialize: function(){
+      this.model.on('change', this.render, this);
+    },
+  });
+
+  var AppView = Backbone.View.extend({
+    el: '.container',
+    initialize: function(){
+      this.input = this.$('#new-task');
+      taskList.on('add', this.addAllTasks, this);
+      taskList.on('reset', this.addAllTasks, this)
+      taskList.fetch();
+    },
+    events: {
+      'keypress #new-task': 'createNewTaskOnEnter'
+    },
+    createNewTaskOnEnter: function(event){
+      if(event.keyCode === 13) {
+        var test = taskList.create(this.newTask());
+        // debugger
+        this.input.val('');
+      }
+
+    },
+    addTask: function(todo){
+      var view = new ListView({model: todo});
+      $('#list').append(view.render().el);
+    },
+    addAllTasks: function(){
+      this.$('#list').html('');
+      taskList.each(this.addTask, this);
+    },
+    newTask: function(){
+      return {
+        description: this.input.val().trim(),
+        done: false
+      }
+    }
+  });
+
+  var appView = new AppView();
+
   </script>
   
 </body>

@@ -19,7 +19,7 @@ var TaskList = Backbone.Collection.extend({
 
 var ListView = Backbone.View.extend({
   tagName: 'li',
-  template: _.template($('task-template').html()),
+  template: _.template($('#task-template').html()),
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
     return this;
@@ -32,16 +32,34 @@ var ListView = Backbone.View.extend({
 var AppView = Backbone.View.extend({
   el: '.container',
   initialize: function(){
-
+    this.input = this.$('#new-task');
   },
   events: {
     'keypress #new-task': 'createNewTaskOnEnter'
   },
   createNewTaskOnEnter: function(event){
     if(event.keyCode === 13) {
-      // create a new task in the collection
+      TaskList.create(this.newTask());
+      this.input.val('');
     }
+  },
+  addTask: function(todo){
+    var view = new TaskView({model: todo});
+    $('#list').append(view.render().el);
+  },
+  newTask: function(){
+    return {
+      description: this.input.val().trim(),
+      done: false
     }
-
   }
+});
+
+$(document).ready(function(){
+  // create instances of...//
+
+  // collections
+  var taskList = new TaskList();
+  // views
+  var appView = new AppView();
 })

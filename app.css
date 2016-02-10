@@ -11,6 +11,11 @@
   border-radius: 15px;
 }
 
+.list-display{
+  text-align: left;
+  padding-left: 30px;
+}
+
 #new-task{
   width: 300px;
   height: 40px;
