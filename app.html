@@ -20,7 +20,7 @@
   <div class="container">
     <header>
       <h1>To Do List:</h1>
-      <input id="new-task" placeholder="+ Add a task..." >
+      <input id="new-task" placeholder="+ Add a task..." />
     </header>
 
     <div class="list-display">
@@ -31,9 +31,9 @@
 
   <script type="text/template" id="task-template">
     <div>
-      <input class="toggle" type="checkbox" <%= done ? 'checked' : '' %>>
+      <input class="toggle" type="checkbox" <%= done ? 'checked' : '' %> />
       <label><%- description %></label>
-      <input class="edit" value="<%- description %>">
+      <input class="edit" value="<%- description %>" />
       <div class="delete">
         <button>X</button>
       </div>
