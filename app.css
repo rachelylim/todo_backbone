@@ -1,7 +1,10 @@
 *{
   list-style: none;
+  font-family: sans-serif;
 }
-
+h1{
+  color: grey;
+}
 body{
   margin-top: 30px;
 }
@@ -12,33 +15,60 @@ body{
   margin: auto;
   width: 400px;
   height: 600px;
-  border: black solid;
+  border: grey solid;
   border-radius: 15px;
   overflow: scroll;
 }
 
 .list-display{
   text-align: left;
-  padding-left: 30px;
+  margin-left: -5px;
+  /*padding-left: 30px;*/
   font-size: 20px;
 }
 
 li{
   border: lightgrey solid 2px;
   margin: 1px;
-  width: 250px;
+  width: 300px;
   height: 100%;
   padding: 10px;
   border-radius: 15px;
 }
 
 li:hover{
-  background: lightgrey;
-  opacity: 0.7;
+  border: grey solid 2px;
+  /*background: lightgrey;
+  opacity: 0.7;*/
 }
-/*input[type=checked]{
 
-}*/
+.toggle:checked + label{
+  text-decoration: line-through;
+  color: lightgrey;
+}
+
+input[type=checkbox]{
+  background: grey;
+}
+
+button {
+  font-size: 20px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+button:hover{
+  color:darkred;
+  font-weight: bold;
+}
+
+.delete{
+  float: right;
+}
 
 #new-task{
   width: 300px;
@@ -46,7 +76,9 @@ li:hover{
   font-size: 20px;
   border-radius: 20px;
   background: lightgrey;
+  opacity: 0.7;
   padding-left: 20px;
   border: 0;
   outline: none;
+  /*font-family: serif;*/
 }
