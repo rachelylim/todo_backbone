@@ -29,6 +29,9 @@
   <div>
     <input class="toggle" type="checkbox" <%= done ? 'checked' : '' %>>
     <label><%- description %></label>
+    <div class="delete">
+      <button>X</button>
+    </div>
   </div>
   </script>
   
@@ -64,13 +67,19 @@
     },
     initialize: function(){
       this.model.on('change', this.render, this);
+      this.model.on('destroy', this.remove, this)
     },
     events: {
-      'click .toggle': 'doneTask'
+      'click .toggle': 'doneTask',
+      'click .delete': 'destroy'
     },
     doneTask: function(){
       this.model.toggle();
     },
+    destroy: function(){
+      this.model.destroy();
+      console.log("item destroyed")
+    }
   });
 
   var AppView = Backbone.View.extend({

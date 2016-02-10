@@ -40,9 +40,25 @@ li:hover{
 .toggle:checked + label{
   text-decoration: line-through;
 }
-/*input[type=checked]{
 
-}*/
+button {
+  font-size: 20px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+button:hover{
+  color:darkred;
+  font-weight: bold;
+}
+
+.delete{
+  float: right;
+}
 
 #new-task{
   width: 300px;
