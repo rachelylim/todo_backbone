@@ -6,6 +6,7 @@ $(document).ready(function(){
     template: _.template($('#task-template').html()),
     render: function(){
       this.$el.html(this.template(this.model.toJSON()));
+      this.input = this.$('.edit');
       return this;
     },
     initialize: function(){
@@ -14,14 +15,32 @@ $(document).ready(function(){
     },
     events: {
       'click .toggle': 'doneTask',
-      'click .delete': 'destroy'
+      'click .delete': 'destroy',
+      'dblclick label': 'edit',
+      'keypress .edit': 'enterSave',
+      'blur .edit': 'save'
+    },
+    edit: function(){
+      this.$el.addClass('editing');
+      this.input.focus();
+    },
+    save: function(){
+      var update = this.input.val().trim();
+      if(update){
+        this.model.save({description: update});
+      }
+      this.$el.removeClass('editing');
+    },
+    enterSave: function(event){
+      if(event.which === 13){
+        this.save();
+      }
     },
     doneTask: function(){
       this.model.toggle();
     },
     destroy: function(){
       this.model.destroy();
-      console.log("item destroyed")
     }
   });
 });
